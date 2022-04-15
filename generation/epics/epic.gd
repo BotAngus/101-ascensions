@@ -36,10 +36,10 @@ func create(with_id: int) -> void:
 	id = with_id
 	
 func load_from(with_id: int) -> void:
-	var epics: Dictionary = read_all_epics();
+	var epics: Dictionary = Json.read_json_from_path(path);
 	if epics.has(with_id):
 		var from = epics[with_id];
-		name = from["name"];
+		name = from["name"];	
 		type = from["type"];
 		main_characters = from["main_characters"];
 		rules = from["rules"];
@@ -60,28 +60,10 @@ func to_dict() -> Dictionary:
 		"endings": endings
 	};
 func save() -> void:
-	var epics: Dictionary = read_all_epics();
+	var epics: Dictionary = Json.read_json_from_path(path);
 	epics[id] = self.to_dict();
-	write_all_epics(epics);
+	Json.write_json_to_path(path, epics);
 	
-static func read_all_epics() -> Dictionary:
-	var f: File = File.new();
-	if f.open(path, File.READ) == OK:
-		var data = f.get_var();
-		if data == null:
-			return {}
-		f.close()
-		return data;
-	return {};
-	
-static func write_all_epics(data: Dictionary) -> bool:
-	var f: File = File.new();
-	if f.open(path, File.WRITE) == OK:
-		f.store_var(data)
-		f.close()
-		return true;
-	printerr("Unable to open %s", path);
-	return false;
 
 
 

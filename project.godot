@@ -13,9 +13,15 @@ _global_script_classes=[{
 "class": &"Epic",
 "language": &"GDScript",
 "path": "res://generation/epics/epic.gd"
+}, {
+"base": "RefCounted",
+"class": &"Json",
+"language": &"GDScript",
+"path": "res://script/json.gd"
 }]
 _global_script_class_icons={
-"Epic": ""
+"Epic": "",
+"Json": ""
 }
 
 [application]
