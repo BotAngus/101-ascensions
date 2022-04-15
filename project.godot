@@ -8,6 +8,16 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "RefCounted",
+"class": &"Epic",
+"language": &"GDScript",
+"path": "res://generation/epics/epic.gd"
+}]
+_global_script_class_icons={
+"Epic": ""
+}
+
 [application]
 
 config/name="101 -ascensions"

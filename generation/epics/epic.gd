@@ -1,3 +1,5 @@
+class_name Epic
+
 # Name
 # Type
 # Main Characters
@@ -7,9 +9,9 @@
 # Possible Events
 # Possible Endings
 
-var path: String = "user://epics.json";
+const path: String = "user://epics.json";
 
-var f: File = File.new();
+
 
 enum Type {
 	Isekai,
@@ -63,6 +65,7 @@ func save() -> void:
 	write_all_epics(epics);
 	
 static func read_all_epics() -> Dictionary:
+	var f: File = File.new();
 	if f.open(path, File.READ) == OK:
 		var data = f.get_var();
 		if data == null:
@@ -72,6 +75,7 @@ static func read_all_epics() -> Dictionary:
 	return {};
 	
 static func write_all_epics(data: Dictionary) -> bool:
+	var f: File = File.new();
 	if f.open(path, File.WRITE) == OK:
 		f.store_var(data)
 		f.close()
